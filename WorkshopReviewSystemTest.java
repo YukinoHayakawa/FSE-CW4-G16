@@ -42,7 +42,22 @@ public class WorkshopReviewSystemTest
     @Test
     public void exit()
     {
-        assertIOEquals("X\n", ln_menu + ln_exit);
+        assertIOEquals(
+            "X\n",
+            ln_menu + ln_exit
+        );
+    }
+
+    @Test
+    public void overview_exit()
+    {
+        assertIOEquals(
+            "O\nX\n",
+            ln_menu
+                + "1) Paper 1 is great - 3.0\n"
+                + "2) Paper 2 is my best work - 1.3333334\n"
+            + ln_menu + ln_exit
+        );
     }
 
     private void assertIOEquals(String test_in, String expected_out)

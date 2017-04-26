@@ -1,3 +1,4 @@
+import java.security.InvalidParameterException;
 
 public class WorkshopReview {
 	private int RScore;
@@ -16,12 +17,12 @@ public class WorkshopReview {
 		//Fix Info:mID(2) in Table2
 		if (rScore < 1 || rScore > 5)
 		{
-			throw new Exception("Invalid input score");
+			throw new InvalidParameterException("Invalid input score");
 		}
 		//Fix Info:mID(3) in Table2
 		if (rReview.length() < 9)
 		{
-			throw new Exception("Review too short");
+			throw new InvalidParameterException("Review too short");
 		}
 		RScore = rScore;
 		RReview = rReview;
