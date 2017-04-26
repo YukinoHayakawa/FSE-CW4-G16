@@ -171,6 +171,16 @@ public class WorkshopReviewSystemTest
         );
     }
 
+    @Test
+    public void invalid_command__exit()
+    {
+        assertIOEquals(
+            "~\nX\n",
+            ln_menu + "Command not recognised\n" +
+                ln_menu + ln_exit
+        );
+    }
+
     private void assertIOEquals(String test_in, String expected_out)
     {
         // build a InputStream from the assumed user input string, to feed stdin.
