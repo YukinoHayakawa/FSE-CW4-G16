@@ -94,6 +94,38 @@ public class WorkshopReviewSystemTest
         );
     }
 
+    @Test
+    public void add_paper__add_review_3__overview__detail__exit()
+    {
+        assertIOEquals(
+            "P\nAwesome Paper\n" +
+                "R\n3\n4\nIt's awesome.\n" +
+                "R\n3\n1\nIt's just awesome.\n" +
+                "R\n3\n5\nIt's very awesome.\n" +
+                "O\n3\nX\n",
+            ln_menu + lns_add_paper_success +
+                ln_menu + lns_add_review_prompts + "[Review added to Paper 3]\n" +
+                ln_menu + lns_add_review_prompts + "[Review added to Paper 3]\n" +
+                ln_menu + lns_add_review_prompts + "[Review added to Paper 3]\n" +
+                ln_menu + lns_start_papers_overview + "3) Awesome Paper - 3.3333333\n" +
+                ln_menu + "\n" +
+                "Paper 3 - Average Score = ***\n" +
+                "\n" +
+                "Review 1:\n" +
+                "Score = ****\n" +
+                " Review: It's awesome.\n\n" +
+                "Review 2:\n" +
+                "Score = *\n" +
+                " Review: It's just awesome.\n" +
+                "\n" +
+                "Review 3:\n" +
+                "Score = *****\n" +
+                " Review: It's very awesome.\n" +
+                "\n" +
+                ln_menu + ln_exit
+        );
+    }
+
     private void assertIOEquals(String test_in, String expected_out)
     {
         // build a InputStream from the assumed user input string, to feed stdin.
