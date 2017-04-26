@@ -78,6 +78,16 @@ public class WorkshopReviewSystemTest
     }
 
     @Test
+    public void add_paper_empty_title__overview__exit()
+    {
+        assertIOEquals(
+            "P\n\nX\n",
+            ln_menu + "What is the title of the paper?\nSomething went wrong: java.lang.Exception: Title is empty!\n\n" +
+                ln_menu + ln_exit
+        );
+    }
+
+    @Test
     public void add_paper__add_review__overview__detail__exit()
     {
         assertIOEquals(

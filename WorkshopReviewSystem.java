@@ -76,19 +76,12 @@ public class WorkshopReviewSystem {
 		
 	}
 	
-	private static void AddPaper(Scanner in) {
+	private static void AddPaper(Scanner in) throws Exception
+	{
 		System.out.println("What is the title of the paper?");
 		in.nextLine(); // to remove read-in bug
 		String title = in.nextLine();
-		try
-		{
-			AllPapers.add(new WorkshopPaper(title));
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.toString());
-			return;
-		}
+		AllPapers.add(new WorkshopPaper(title));
 		System.out.println("[Paper added]");
 	}
 	
