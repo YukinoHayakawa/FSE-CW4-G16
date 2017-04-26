@@ -161,6 +161,16 @@ public class WorkshopReviewSystemTest
         );
     }
 
+    @Test
+    public void detail_invalid_id_0__exit()
+    {
+        assertIOEquals(
+            "0\nX\n",
+            ln_menu + str_error_begin + "java.lang.ArrayIndexOutOfBoundsException: -1\n\n" +
+                ln_menu + ln_exit
+        );
+    }
+
     private void assertIOEquals(String test_in, String expected_out)
     {
         // build a InputStream from the assumed user input string, to feed stdin.
