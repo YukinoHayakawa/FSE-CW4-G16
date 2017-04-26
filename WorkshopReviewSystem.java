@@ -55,11 +55,17 @@ public class WorkshopReviewSystem {
 				} else if (s.equals("X")) {
 					System.out.println("Goodbye!");
 					break;
-				} else if (Integer.parseInt(s) != -1 ) {
-					PrintAPaper(Integer.parseInt(s)-1);
 				} else {
-					System.out.println("Command not recognised");
-				}
+				    try
+                    {
+                        int id = Integer.parseInt(s);
+                        PrintAPaper(id);
+                    }
+                    catch (NumberFormatException e)
+                    {
+                        System.out.println("Command not recognised");
+                    }
+                }
 			} catch (Exception e) {
 				System.out.println("Something went wrong: " + e.toString() + "\n");
 				
