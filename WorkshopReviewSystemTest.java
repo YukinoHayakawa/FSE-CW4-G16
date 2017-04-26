@@ -20,6 +20,10 @@ public class WorkshopReviewSystemTest
     private static String lns_start_papers_overview =
         "1) Paper 1 is great - 3.0\n"
         + "2) Paper 2 is my best work - 1.3333334\n";
+    private static String lns_add_paper_success =
+        "What is the title of the paper?\n[Paper added]\n";
+    private static String lns_add_review_prompts =
+        "Which paper do you want to add a review to?\nWhat score do you give it?\nPlease enter your review:\n";
 
     @Before
     // backup original system properties & IO streams
@@ -66,8 +70,26 @@ public class WorkshopReviewSystemTest
     {
         assertIOEquals(
             "P\nAwesome Paper\nO\nX\n",
-            ln_menu + "What is the title of the paper?\n[Paper added]\n" +
+            ln_menu + lns_add_paper_success +
                 ln_menu + lns_start_papers_overview + "3) Awesome Paper - 0.0\n" +
+                ln_menu + ln_exit
+        );
+    }
+
+    @Test
+    public void add_paper__add_review__overview__detail__exit()
+    {
+        assertIOEquals(
+            "P\nAwesome Paper\nR\n3\n4\nIt's awesome.\nO\n3\nX\n",
+            ln_menu + lns_add_paper_success +
+                ln_menu + lns_add_review_prompts + "[Review added to Paper 3]\n" +
+                ln_menu + lns_start_papers_overview + "3) Awesome Paper - 4.0\n" +
+                ln_menu + "\n" +
+                "Paper 3 - Average Score = ****\n" +
+                "\n" +
+                "Review 1:\n" +
+                "Score = ****\n" +
+                " Review: It's awesome.\n\n" +
                 ln_menu + ln_exit
         );
     }
