@@ -137,6 +137,30 @@ public class WorkshopReviewSystemTest
         );
     }
 
+    @Test
+    public void add_paper__add_review_invalid_score_0__overview__exit()
+    {
+        assertIOEquals(
+            "P\nAwesome Paper\n" +
+                "R\n3\n0\nIt's awesome.\nX\n",
+            ln_menu + lns_add_paper_success +
+                ln_menu + lns_add_review_prompts + str_error_begin + "java.lang.Exception: Invalid input score\n\n" +
+                ln_menu + ln_exit
+        );
+    }
+
+    @Test
+    public void add_paper__add_review_invalid_score_6__overview__exit()
+    {
+        assertIOEquals(
+            "P\nAwesome Paper\n" +
+                "R\n3\n6\nIt's awesome.\nX\n",
+            ln_menu + lns_add_paper_success +
+                ln_menu + lns_add_review_prompts + str_error_begin + "java.lang.Exception: Invalid input score\n\n" +
+                ln_menu + ln_exit
+        );
+    }
+
     private void assertIOEquals(String test_in, String expected_out)
     {
         // build a InputStream from the assumed user input string, to feed stdin.
