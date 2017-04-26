@@ -59,7 +59,7 @@ public class WorkshopReviewSystem {
 				    try
                     {
                         int id = Integer.parseInt(s);
-                        PrintAPaper(id);
+                        PrintAPaper(id - 1);
                     }
                     catch (NumberFormatException e)
                     {
