@@ -24,6 +24,7 @@ public class WorkshopReviewSystemTest
         "What is the title of the paper?\n[Paper added]\n";
     private static String lns_add_review_prompts =
         "Which paper do you want to add a review to?\nWhat score do you give it?\nPlease enter your review:\n";
+    private static String str_error_begin = "Something went wrong: ";
 
     @Before
     // backup original system properties & IO streams
@@ -122,6 +123,16 @@ public class WorkshopReviewSystemTest
                 "Score = *****\n" +
                 " Review: It's very awesome.\n" +
                 "\n" +
+                ln_menu + ln_exit
+        );
+    }
+
+    @Test
+    public void add_review_extra_review__exit()
+    {
+        assertIOEquals(
+            "R\n1\n4\nIt's awesome.\nX\n",
+            ln_menu + lns_add_review_prompts + str_error_begin + "java.lang.Exception: 3 reviews already!\n\n" +
                 ln_menu + ln_exit
         );
     }

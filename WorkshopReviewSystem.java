@@ -86,7 +86,8 @@ public class WorkshopReviewSystem {
 		System.out.println("[Paper added]");
 	}
 	
-	private static void AddReview(Scanner in) {
+	private static void AddReview(Scanner in) throws Exception
+    {
 		System.out.println("Which paper do you want to add a review to?");
 		int x = in.nextInt();
 		System.out.println("What score do you give it?");
@@ -95,15 +96,7 @@ public class WorkshopReviewSystem {
 		in.nextLine(); //to remove read-in bug
 		String review = in.nextLine();
 		WorkshopPaper wp = AllPapers.get(x-1);
-		try
-		{
-			wp.addReview(new WorkshopReview(score,review));
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.toString());
-			return;
-		}
+        wp.addReview(new WorkshopReview(score,review));
 		System.out.println("[Review added to Paper " + x + "]");
 	}
 	
