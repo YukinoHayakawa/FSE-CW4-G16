@@ -17,6 +17,9 @@ public class WorkshopReviewSystemTest
 
     private static String ln_menu = "What do you want to do?\n O = Overview, P = Add Paper, R = Add Review, [num] = Detail of that paper, X = exit\n";
     private static String ln_exit = "Goodbye!\n";
+    private static String lns_start_papers_overview =
+        "1) Paper 1 is great - 3.0\n"
+        + "2) Paper 2 is my best work - 1.3333334\n";
 
     @Before
     // backup original system properties & IO streams
@@ -49,14 +52,23 @@ public class WorkshopReviewSystemTest
     }
 
     @Test
-    public void overview_exit()
+    public void overview__exit()
     {
         assertIOEquals(
             "O\nX\n",
-            ln_menu
-                + "1) Paper 1 is great - 3.0\n"
-                + "2) Paper 2 is my best work - 1.3333334\n"
-            + ln_menu + ln_exit
+            ln_menu + lns_start_papers_overview +
+            ln_menu + ln_exit
+        );
+    }
+
+    @Test
+    public void add_paper__overview__exit()
+    {
+        assertIOEquals(
+            "P\nAwesome Paper\nO\nX\n",
+            ln_menu + "What is the title of the paper?\n[Paper added]\n" +
+                ln_menu + lns_start_papers_overview + "3) Awesome Paper - 0.0\n" +
+                ln_menu + ln_exit
         );
     }
 
